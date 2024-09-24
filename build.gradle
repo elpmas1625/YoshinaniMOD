@@ -35,10 +35,14 @@ minecraft {
 
         client {
             property 'forge.enabledGameTestNamespaces', mod_id
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
         }
 
         server {
             property 'forge.enabledGameTestNamespaces', mod_id
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             args ''
         }
 
@@ -68,6 +72,10 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     implementation fg.deobf("curse.maven:jei-238222:5626488")
+    implementation fg.deobf("curse.maven:library-of-exile-398780:5625554")
+    implementation fg.deobf("curse.maven:curios-309927:5680164")
+    implementation fg.deobf("curse.maven:playernnimator-658587:4587214")
+    implementation fg.deobf("curse.maven:mine_and_slash-306575:5734106")
 }
 
 tasks.named('processResources', ProcessResources).configure {
