@@ -2,6 +2,7 @@ package com.yoshinani.yoshinanimod;
 
 import com.mojang.logging.LogUtils;
 import com.yoshinani.money.Money;
+import com.yoshinani.therapist.Therapist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -13,7 +14,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
@@ -85,6 +88,11 @@ public class YoshinaniMod {
     }
 
     @SubscribeEvent
+    public void ItemTooltipEvent(ItemTooltipEvent event) {
+        Therapist.AddInsuredTooltip(event);
+    }
+
+    @SubscribeEvent
     public void onPlayerJump(LivingEvent.LivingJumpEvent event) {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
@@ -94,13 +102,26 @@ public class YoshinaniMod {
                 player.drop(oakLog, false);
             }
 
-            if (event.getEntity() instanceof ServerPlayer) {
-                setPlayerMoney(player, random.nextLong(10000));
-                LOGGER.info("{}: {}円", player.getStringUUID(), getPlayerMoney(player));
+            if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+                setPlayerMoney(serverPlayer, random.nextLong(10000));
+                Therapist.AddInsuredItem(serverPlayer);
             }
         }
     }
 
+    @SubscribeEvent
+    public void livingDeathEvent(LivingDeathEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Therapist.InsureItemStore(player);
+        }
+    }
+
+    @SubscribeEvent
+    public void PlayerRespawnEvent(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            Therapist.GiveInsuredItem(player);
+        }
+    }
 
     @Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
     public class ClientModEvents {
