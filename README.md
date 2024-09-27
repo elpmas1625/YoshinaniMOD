@@ -1,4 +1,6 @@
 
+![代替テキスト](src/main/resources/logo.jpg)
+
 Source installation information for modders
 -------------------------------------------
 This code follows the Minecraft Forge installation methodology. It will apply
