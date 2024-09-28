@@ -1,35 +1,70 @@
 package com.yoshinani.customTrader;
 
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import com.yoshinani.money.Money;
+import com.yoshinani.therapist.Therapist;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.network.chat.Component;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.Containers;
 
 public class TheraistTrader extends CustomTrader {
     public TheraistTrader(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
     }
 
-    @Override
-    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
-        if (player.level().isClientSide) {
-            ModScreens.openTherapistTraderScreen(player);
-            return InteractionResult.SUCCESS;
-        }
+    public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
+        if (!this.level().isClientSide) {
+            SimpleContainer container = new SimpleContainer(54) {
+                @Override
+                public void stopOpen(@NotNull Player player) {
+                    super.stopOpen(player);
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        int cnt = 0;
+                        for (int i = 0; i < this.getContainerSize(); i++) {
+                            ItemStack stack = this.getItem(i);
+                            if (!stack.isEmpty() && !Therapist.isInsured(stack)) {
+                                cnt++;
+                            }
+                        }
+                        if ((long) cnt * Therapist.INSURE_FEE >= Money.getPlayerMoney(serverPlayer)) {
+                            serverPlayer.sendSystemMessage(Component.literal("お金が足りません"));
+                        } else {
+                            Money.setPlayerMoney(serverPlayer, Money.getPlayerMoney(serverPlayer) - (long) cnt * Therapist.INSURE_FEE);
+                            for (int i = 0; i < this.getContainerSize(); i++) {
+                                ItemStack stack = this.getItem(i);
+                                if (!stack.isEmpty()) {
+                                    Therapist.AddInsuredToItem(serverPlayer, stack);
+                                }
+                            }
+                        }
+                        for (int i = 0; i < this.getContainerSize(); i++) {
+                            ItemStack stack = this.getItem(i);
+                            if (!stack.isEmpty()) {
+                                Containers.dropItemStack(serverPlayer.level(), serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), stack);
+                            }
+                        }
+                    }
+                }
+            };
 
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (itemstack.isEmpty()) {
-            player.displayClientMessage(Component.literal("Hello, I am the Therapist Trader!"), false);
-            this.playSound(SoundEvents.VILLAGER_YES, 1.0F, 1.0F);
-            return InteractionResult.SUCCESS;
-        }
+            MenuProvider menuProvider = new SimpleMenuProvider(
+                    (containerId, playerInventory, playerEntity) -> new ChestMenu(MenuType.GENERIC_9x6, containerId, playerInventory, container, 6),
+                    Component.literal("保険をかけたいアイテムを入れて閉じる")
+            );
 
-        return super.mobInteract(player, hand);
+            NetworkHooks.openScreen((ServerPlayer) player, menuProvider);
+
+            return InteractionResult.CONSUME;
+        }
+        return InteractionResult.PASS;
     }
 }

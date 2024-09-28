@@ -15,6 +15,8 @@ import java.util.*;
 public class Therapist {
     private static final Map<UUID, ArrayList<ItemStack>> itemStore = new HashMap<>();
 
+    public static final int INSURE_FEE = 1000;
+
     public static void AddInsuredTooltip(ItemTooltipEvent event) {
         List<Component> tooltipList = event.getToolTip();
         CompoundTag itemTag = event.getItemStack().getTag();
@@ -23,16 +25,15 @@ public class Therapist {
         }
     }
 
-    public static void AddInsuredItem(ServerPlayer player) {
-        long count = 0;
-        for (ItemStack item: player.inventoryMenu.getItems()) {
-            CompoundTag itemTag = item.getTag();
-            if (itemTag == null || !itemTag.contains("insured")) {
-                item.addTagElement("insured", StringTag.valueOf(player.getUUID().toString()));
-                count += 1;
-            }
+    public static boolean isInsured(ItemStack item) {
+        CompoundTag itemTag = item.getTag();
+        return itemTag != null && itemTag.contains("insured");
+    }
+
+    public static void AddInsuredToItem(ServerPlayer player, ItemStack item) {
+        if (!isInsured(item)) {
+            item.addTagElement("insured", StringTag.valueOf(player.getUUID().toString()));
         }
-        Money.setPlayerMoney(player, Money.getClientMoney() - 100L * count);
     }
 
     public static void InsureItemStore(ServerPlayer player) {
