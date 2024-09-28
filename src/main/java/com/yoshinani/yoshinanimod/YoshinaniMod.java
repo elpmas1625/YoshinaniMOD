@@ -114,7 +114,6 @@ public class YoshinaniMod {
 
             if (event.getEntity() instanceof ServerPlayer serverPlayer) {
                 setPlayerMoney(serverPlayer, random.nextLong(10000));
-                Therapist.AddInsuredItem(serverPlayer);
             }
         }
     }
