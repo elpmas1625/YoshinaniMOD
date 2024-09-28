@@ -1,6 +1,8 @@
 package com.yoshinani.yoshinanimod;
 
 import com.mojang.logging.LogUtils;
+import com.yoshinani.customTrader.CustomTrader;
+import com.yoshinani.customTrader.ModEntities;
 import com.yoshinani.money.Money;
 import com.yoshinani.therapist.Therapist;
 import net.minecraft.client.Minecraft;
@@ -14,6 +16,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -44,6 +47,8 @@ public class YoshinaniMod {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+        ModEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        modEventBus.addListener(this::registerAttributes);
     }
 
     @SubscribeEvent
@@ -76,6 +81,10 @@ public class YoshinaniMod {
             INSTANCE.sendTo(new Money.MoneyUpdatePacket(money), player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
         }
 
+    }
+
+    private void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.THERAPIST_TRADER.get(), CustomTrader.createAttributes().build());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
