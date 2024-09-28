@@ -85,6 +85,7 @@ public class YoshinaniMod {
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.THERAPIST_TRADER.get(), CustomTrader.createAttributes().build());
+        event.put(ModEntities.SHOP_TRADER.get(), CustomTrader.createAttributes().build());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

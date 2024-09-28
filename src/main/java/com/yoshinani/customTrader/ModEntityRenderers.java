@@ -12,5 +12,6 @@ public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.THERAPIST_TRADER.get(), TherapistTraderRenderer::new);
+        event.registerEntityRenderer(ModEntities.SHOP_TRADER.get(), ShopTraderRenderer::new);
     }
 }
