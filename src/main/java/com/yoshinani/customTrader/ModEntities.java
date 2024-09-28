@@ -20,10 +20,19 @@ public class ModEntities {
             .sized(0.6F, 1.95F)
             .build("therapist_trader"));
 
+    public static final RegistryObject<EntityType<ShopTrader>> SHOP_TRADER = ENTITY_TYPES.register("shop_trader",
+            () -> EntityType.Builder.of(ShopTrader::new, MobCategory.MISC)
+                    .sized(0.6F, 1.95F)
+                    .build("shop_trader"));
+
     @SubscribeEvent
     public static void registerEntities(RegisterEvent event) {
         event.register(ForgeRegistries.Keys.ENTITY_TYPES, helper -> {
             helper.register(THERAPIST_TRADER.getId(), THERAPIST_TRADER.get());
+        });
+
+        event.register(ForgeRegistries.Keys.ENTITY_TYPES, helper -> {
+            helper.register(SHOP_TRADER.getId(), SHOP_TRADER.get());
         });
     }
 }
