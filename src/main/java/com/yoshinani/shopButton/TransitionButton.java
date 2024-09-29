@@ -1,5 +1,6 @@
 package com.yoshinani.shopButton;
 
+import com.yoshinani.customTrader.CustomChestMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -41,5 +42,10 @@ public class TransitionButton implements ShopButton {
         itemStack.setHoverName(Component.nullToEmpty(displayName));
 
         return itemStack;
+    }
+
+    @Override
+    public void clicked(CustomChestMenu parent) {
+        parent.setPage(next);
     }
 }

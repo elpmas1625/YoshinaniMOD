@@ -25,8 +25,8 @@ import static com.yoshinani.money.Money.setPlayerMoney;
 
 public class CustomChestMenu extends ChestMenu {
     private final Container container;
-    private String page = "mode";
-    Map<Integer, ShopButton> items;
+    private Map<Integer, ShopButton> items;
+    public String page = "mode";
 
     public CustomChestMenu(MenuType<?> pType, int pContainerId, Inventory pPlayerInventory, Container pContainer, int pRows) {
         super(pType, pContainerId, pPlayerInventory, pContainer, pRows);
@@ -43,12 +43,12 @@ public class CustomChestMenu extends ChestMenu {
                 player.sendSystemMessage(Component.literal("選択したアイテム: " + clickedStack.getHoverName().getString()));
                 player.playNotifySound(SoundEvents.UI_BUTTON_CLICK.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
-                setPage(page);
+                items.get(slotId).clicked(this);
             }
         }
     }
 
-    private void setPage(String p){
+    public void setPage(String p){
         page = p;
         items = LoadYAML.MasterYAML.get(page);
 

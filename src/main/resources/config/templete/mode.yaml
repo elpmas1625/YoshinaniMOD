@@ -3,7 +3,7 @@ items:
     itemId: minecraft:diamond_sword
     slotId: 25
     displayName: 購入
-    next: buy
+    next: buy_page1
 
   - type: transition
     itemId: minecraft:emerald

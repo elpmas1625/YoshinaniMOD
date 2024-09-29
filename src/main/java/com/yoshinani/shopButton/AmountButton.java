@@ -1,5 +1,6 @@
 package com.yoshinani.shopButton;
 
+import com.yoshinani.customTrader.CustomChestMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -42,5 +43,10 @@ public class AmountButton implements ShopButton {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), amount);
         itemStack.setHoverName(Component.nullToEmpty(displayName));
         return itemStack;
+    }
+
+    @Override
+    public void clicked(CustomChestMenu parent) {
+
     }
 }
