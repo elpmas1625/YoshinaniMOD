@@ -43,6 +43,8 @@ public class SelectButton implements ShopButton {
 
     @Override
     public void clicked(CustomChestMenu parent) {
-
+        parent.selectedItemId = itemId;
+        parent.selectedItemAmount = 1;
+        parent.setPage("buy");
     }
 }
