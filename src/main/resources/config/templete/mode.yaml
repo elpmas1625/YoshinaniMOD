@@ -1,0 +1,5 @@
+items:
+  - name: minecraft:diamond
+    grid: 1
+  - name: minecraft:emerald
+    grid: 3
