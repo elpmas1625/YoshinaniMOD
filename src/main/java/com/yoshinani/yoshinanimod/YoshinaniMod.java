@@ -3,6 +3,7 @@ package com.yoshinani.yoshinanimod;
 import com.mojang.logging.LogUtils;
 import com.yoshinani.customTrader.CustomTrader;
 import com.yoshinani.customTrader.ModEntities;
+import com.yoshinani.loadyaml.LoadYAML;
 import com.yoshinani.money.Money;
 import com.yoshinani.therapist.Therapist;
 import net.minecraft.client.Minecraft;
@@ -57,6 +58,9 @@ public class YoshinaniMod {
 
         Money.loadPlayerMoney();
 
+        LoadYAML.init();
+        LOGGER.info("DONE Load.YAML.init()");
+
         LOGGER.info("FINISH onServerStarting()");
     }
 
@@ -90,7 +94,9 @@ public class YoshinaniMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            LOGGER.info("START commonSetup");
             Money.init();
+            LOGGER.info("DONE Money.init()");
         });
     }
 

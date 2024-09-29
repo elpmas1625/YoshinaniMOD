@@ -1,0 +1,5 @@
+items:
+  - name: mmorpg:map
+    grid: 10
+  - name: minecraft:diamond
+    grid: 20

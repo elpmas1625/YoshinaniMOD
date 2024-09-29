@@ -60,6 +60,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenCentral()
     maven {
         url "https://cursemaven.com"
         content {
@@ -124,4 +125,6 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:unchecked,divzero'
+    options.deprecation = true
 }
