@@ -4,6 +4,7 @@ import com.yoshinani.loadyaml.LoadYAML;
 import com.yoshinani.shopButton.ShopButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -23,7 +24,10 @@ public class CustomChestMenu extends ChestMenu {
     private Map<Integer, ShopButton> items;
     public String page = "mode";
     public String selectedItemId = "minecraft:error";
-    public int selectedItemAmount = 1;
+    public int selectedItemAmount = -1;
+    public int selectedItemPrice = -1;
+    public ItemStack selectedItemStack;
+    public ServerPlayer player;
 
     public CustomChestMenu(MenuType<?> pType, int pContainerId, Inventory pPlayerInventory, Container pContainer, int pRows) {
         super(pType, pContainerId, pPlayerInventory, pContainer, pRows);
@@ -34,10 +38,11 @@ public class CustomChestMenu extends ChestMenu {
 
     @Override
     public void clicked(int slotId, int buttonId, ClickType clickType, Player player) {
+        this.player = (ServerPlayer) player;
         if (slotId >= 0 && slotId < this.slots.size()) {
             ItemStack clickedStack = this.getSlot(slotId).getItem();
             if (!clickedStack.isEmpty()) {
-                player.sendSystemMessage(Component.literal("選択したアイテム: " + clickedStack.getHoverName().getString()));
+//                player.sendSystemMessage(Component.literal("選択したアイテム: " + clickedStack.getHoverName().getString()));
                 player.playNotifySound(SoundEvents.UI_BUTTON_CLICK.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
                 if (items.containsKey(slotId)) {
@@ -60,8 +65,9 @@ public class CustomChestMenu extends ChestMenu {
 
         // buyページの場合、選択中のアイテムを表示
         if (page.equals("buy")) {
-            ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(selectedItemId))), selectedItemAmount);
-            container.setItem(13, itemStack);
+            selectedItemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(selectedItemId))), selectedItemAmount);
+            selectedItemStack.setHoverName(Component.nullToEmpty(selectedItemPrice + " x " + selectedItemAmount + ": " + selectedItemPrice * selectedItemAmount));
+            container.setItem(13, selectedItemStack);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.yoshinani.shopButton;
 
 import com.yoshinani.customTrader.CustomChestMenu;
+import com.yoshinani.money.Money;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -37,12 +38,23 @@ public class BuyButton implements ShopButton {
     @Override
     public ItemStack createItemStack() {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), 1);
-        itemStack.setHoverName(Component.nullToEmpty(displayName));
+        itemStack.setHoverName(Component.nullToEmpty("購入する"));
         return itemStack;
     }
 
     @Override
     public void clicked(CustomChestMenu parent) {
+        long playerMoney = Money.getPlayerMoney(parent.player);
 
+        // お金が足りない場合は何もしない
+        if (playerMoney < (long) parent.selectedItemPrice * parent.selectedItemAmount) {
+            return;
+        }
+
+        // お金を減らしアイテムをプレイヤーに追加
+        Money.setPlayerMoney(parent.player, playerMoney - (long) parent.selectedItemPrice * parent.selectedItemAmount);
+        parent.player.addItem(new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(parent.selectedItemId))), parent.selectedItemAmount));
+
+        parent.setPage("buy_page1");
     }
 }
