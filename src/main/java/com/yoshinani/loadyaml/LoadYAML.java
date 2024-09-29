@@ -1,6 +1,7 @@
 package com.yoshinani.loadyaml;
 
 import com.mojang.logging.LogUtils;
+import com.yoshinani.shopButton.*;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -16,14 +17,12 @@ import static java.lang.Boolean.TRUE;
 public class LoadYAML {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private static final String KEY1 = "  - name: ";
-    private static final String KEY2 = "    grid: ";
+    private static final String TYPE = "  - type: ";
     private static final String YAML_PATH = "config/yoshinanimod/shopmod";
     static File directory = new File(YAML_PATH);
-    public static Map<String, Map<Integer, String>> MasterYAML = new HashMap<>();
+    public static Map<String, Map<Integer, ShopButton>> MasterYAML = new HashMap<>();
 
     public static void init() {
-
         if(!Main()){LOGGER.info("failed LoadYAML."); System.exit(0);};
         debugModeMap();
     }
@@ -40,13 +39,45 @@ public class LoadYAML {
         return TRUE;
     }
 
-    private static Map<Integer, String>  loadYAML(String filePath){
-        Map<Integer, String> tmpMap = new HashMap<>();
+    private static Map<Integer, ShopButton>  loadYAML(String filePath){
+        Map<Integer, ShopButton> tmpMap = new HashMap<>();
+
         try (Scanner scanner = new Scanner(new FileInputStream(filePath))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                if (line.startsWith("  - name:")) {
-                    tmpMap.put(Integer.valueOf(scanner.nextLine().split(KEY2)[1]), line.split(KEY1)[1]);
+                if (line.startsWith("  - type:")) {
+                    String type = line.split("type: ")[1];
+                    String itemId = scanner.nextLine().split("itemId: ")[1];
+                    int slotId = Integer.parseInt(scanner.nextLine().split("slotId: ")[1]);
+                    String displayName = scanner.nextLine().split("displayName: ")[1];
+
+                    ShopButton shopbutton;
+                    switch(type){
+                        case "transition":
+                            String next = scanner.nextLine().split("next: ")[1];
+                            shopbutton = new TransitionButton(itemId, slotId, displayName, next);
+                            break;
+                        case "amount":
+                            String sign = scanner.nextLine().split("sign: ")[1];
+                            int amount = Integer.parseInt(scanner.nextLine().split("amount: ")[1]);
+                            shopbutton = new AmountButton(itemId, slotId, displayName, sign, amount);
+                            break;
+                        case "buy":
+                            shopbutton = new BuyButton(itemId, slotId, displayName);
+                            break;
+                        case "plain":
+                            shopbutton = new PlainButton(itemId, slotId, displayName);
+                            break;
+                        case "select":
+                            shopbutton = new SelectButton(itemId, slotId, displayName);
+                            break;
+                        case "sell":
+                            shopbutton = new SellButton(itemId, slotId, displayName);
+                            break;
+                        default:
+                            shopbutton = new PlainButton(itemId, slotId, displayName);
+                    }
+                    tmpMap.put(slotId, shopbutton);
                 }
             }
         } catch (FileNotFoundException e) {
