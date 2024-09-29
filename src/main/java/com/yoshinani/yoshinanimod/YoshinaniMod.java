@@ -58,6 +58,9 @@ public class YoshinaniMod {
 
         Money.loadPlayerMoney();
 
+        LoadYAML.init();
+        LOGGER.info("DONE Load.YAML.init()");
+
         LOGGER.info("FINISH onServerStarting()");
     }
 
@@ -94,8 +97,6 @@ public class YoshinaniMod {
             LOGGER.info("START commonSetup");
             Money.init();
             LOGGER.info("DONE Money.init()");
-            LoadYAML.init();
-            LOGGER.info("DONE Load.YAML.init()");
         });
     }
 
