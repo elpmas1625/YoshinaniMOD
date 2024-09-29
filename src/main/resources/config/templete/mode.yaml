@@ -1,5 +1,39 @@
 items:
-  - name: minecraft:diamond
-    grid: 1
-  - name: minecraft:emerald
-    grid: 3
+  - type: transition
+    itemId: minecraft:diamond_sword
+    slotId: 25
+    displayName: 購入
+    next: buy_page1
+
+  - type: transition
+    itemId: minecraft:emerald
+    slotId: 21
+    displayName: 売却
+    next: sell
+
+  - type: amount
+    itemId: minecraft:lime_stained_glass_pane
+    slotId: 3
+    displayName: ＋１0
+    sign: plus
+    amount: 10
+
+  - type: buy
+    itemId: minecraft:gold_ingot
+    slotId: 4
+    displayName: buy
+
+  - type: plain
+    itemId: minecraft:iron_ingot
+    slotId: 5
+    displayName: plain
+
+  - type: select
+    itemId: minecraft:emerald
+    slotId: 2
+    displayName: null
+
+  - type: sell
+    itemId: minecraft:copper_ingot
+    slotId: 6
+    displayName: sell

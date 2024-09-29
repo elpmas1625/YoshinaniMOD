@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 version = mod_version
@@ -77,6 +78,7 @@ dependencies {
     implementation fg.deobf("curse.maven:curios-309927:5680164")
     implementation fg.deobf("curse.maven:playernnimator-658587:4587214")
     implementation fg.deobf("curse.maven:mine_and_slash-306575:5734106")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -127,4 +129,7 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.compilerArgs << '-Xlint:unchecked,divzero'
     options.deprecation = true
+}
+kotlin {
+    jvmToolchain(17)
 }

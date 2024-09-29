@@ -1,5 +1,5 @@
 items:
-  - name: mmorpg:map
-    grid: 10
-  - name: minecraft:diamond
-    grid: 20
+  - type: select
+    itemId: minecraft:emerald
+    slotId: 2
+    displayName: null
