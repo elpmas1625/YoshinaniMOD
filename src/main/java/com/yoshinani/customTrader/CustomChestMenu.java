@@ -2,6 +2,7 @@ package com.yoshinani.customTrader;
 
 import com.yoshinani.loadyaml.LoadYAML;
 import com.yoshinani.shopButton.ShopButton;
+import com.yoshinani.shopButton.TransitionButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -42,7 +43,6 @@ public class CustomChestMenu extends ChestMenu {
                 player.sendSystemMessage(Component.literal("選択したアイテム: " + clickedStack.getHoverName().getString()));
                 player.playNotifySound(SoundEvents.UI_BUTTON_CLICK.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
-
                 setPage(page);
             }
         }
@@ -55,8 +55,7 @@ public class CustomChestMenu extends ChestMenu {
         container.clearContent();
         for (Map.Entry<Integer, ShopButton> entry : items.entrySet()) {
             int slot = entry.getKey();
-            String itemID = entry.getValue().getItemId();
-            ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemID))), 1);
+            ItemStack itemStack = entry.getValue().createItemStack();
             container.setItem(slot, itemStack);
         }
     }

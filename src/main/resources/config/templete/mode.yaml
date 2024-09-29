@@ -14,7 +14,7 @@ items:
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
     slotId: 3
-    displayName: ＋１0個
+    displayName: ＋１0
     sign: plus
     amount: 10
 

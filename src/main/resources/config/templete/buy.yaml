@@ -2,27 +2,27 @@ items:
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
     slotId: 2
-    displayName: ＋１個
+    displayName: ＋１
     sign: plus
     amount: 1
 
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
     slotId: 3
-    displayName: ＋１0個
+    displayName: ＋１0
     sign: plus
     amount: 10
 
   - type: amount
     itemId: minecraft:red_stained_glass_pane
     slotId: 5
-    displayName: -１個
+    displayName: -１
     sign: minus
     amount: 1
 
   - type: amount
     itemId: minecraft:red_stained_glass_pane
     slotId: 6
-    displayName: ＋-10個
+    displayName: ＋-10
     sign: minus
     amount: 10
