@@ -1,5 +1,11 @@
 package com.yoshinani.yoshinanimod;
 
+//TODO: 適宜必要なアイテムを追加
+//TODO: 所持金のリアルタイム反映
+//TODO: レアリティを考慮した売価
+//TODO: 表示される文言の統一
+//TODO: ランダム生成されるべきアイテムの渡し方
+
 import com.mojang.logging.LogUtils;
 import com.yoshinani.customTrader.CustomTrader;
 import com.yoshinani.customTrader.ModEntities;

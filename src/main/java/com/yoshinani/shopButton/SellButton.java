@@ -1,8 +1,11 @@
 package com.yoshinani.shopButton;
 
 import com.yoshinani.customTrader.CustomChestMenu;
+import com.yoshinani.money.Money;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -43,6 +46,15 @@ public class SellButton implements ShopButton {
 
     @Override
     public void clicked(CustomChestMenu parent) {
-
+        int sellingPrice = 0;
+        ServerPlayer player = parent.player;
+        for (int i = 0; i < 45; i++) {
+            ItemStack stack = parent.container.getItem(i);
+            if (!stack.isEmpty()) {
+                sellingPrice += stack.getCount() * 100;
+                parent.container.setItem(i, ItemStack.EMPTY);
+            }
+        }
+        Money.setPlayerMoney(parent.player, Money.getPlayerMoney(parent.player) + (long) sellingPrice);
     }
 }
