@@ -1,0 +1,38 @@
+items:
+
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 45
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 46
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 47
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 48
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 49
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 50
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 51
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 52
+    displayName: null
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 53
+    displayName: null
