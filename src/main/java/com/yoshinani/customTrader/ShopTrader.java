@@ -14,8 +14,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-import static com.yoshinani.money.Money.getClientMoney;
-
 public class ShopTrader extends CustomTrader {
     public ShopTrader(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
@@ -41,10 +39,9 @@ public class ShopTrader extends CustomTrader {
                 }
             };
 
-
             MenuProvider menuProvider = new SimpleMenuProvider(
-                    (containerId, playerInventory, playerEntity) -> new CustomChestMenu(MenuType.GENERIC_9x6, containerId, playerInventory, container, 6, page),
-                    Component.literal("所持金： " + getClientMoney())
+                    (containerId, playerInventory, playerEntity) -> new CustomChestMenu(MenuType.GENERIC_9x6, containerId, playerInventory, container, 6, page, (ServerPlayer) player),
+                    Component.literal("よしなちゃんのショップ")
             );
 
             NetworkHooks.openScreen((ServerPlayer) player, menuProvider);
