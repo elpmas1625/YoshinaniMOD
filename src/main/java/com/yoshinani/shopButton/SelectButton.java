@@ -12,12 +12,13 @@ public class SelectButton implements ShopButton {
     public String itemId;
     public int slotId;
     public String displayName;
-    public int price = 100;
+    public int price;
 
-    public SelectButton(String pItemId, int pSlotId, String pDisplayName) {
+    public SelectButton(String pItemId, int pSlotId, String pDisplayName, int pPrice) {
         itemId = pItemId;
         slotId = pSlotId;
         displayName = pDisplayName;
+        price = pPrice;
     }
 
     @Override
