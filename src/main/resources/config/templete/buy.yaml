@@ -1,4 +1,10 @@
 items:
+
+  - type: plain
+    itemId: minecraft:map
+    slotId: 53
+    displayName: 所持金：
+
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
     slotId: 23
@@ -33,7 +39,7 @@ items:
     displayName: 購入する
 
   - type: transition
-    itemId: minecraft:gold_ingot
+    itemId: minecraft:red_bed
     slotId: 39
     displayName: 戻る
     next: buy_page1

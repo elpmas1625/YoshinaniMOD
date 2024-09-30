@@ -1,4 +1,10 @@
 items:
+
+  - type: plain
+    itemId: minecraft:map
+    slotId: 53
+    displayName: 所持金：
+
   - type: transition
     itemId: minecraft:diamond_sword
     slotId: 24

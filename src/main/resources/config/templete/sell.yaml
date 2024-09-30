@@ -1,38 +1,47 @@
 items:
 
   - type: plain
+    itemId: minecraft:map
+    slotId: 53
+    displayName: 所持金：
+
+  - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 45
     displayName: null
+
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 46
     displayName: null
-  - type: plain
-    itemId: minecraft:gray_stained_glass_pane
+
+  - type: transition
+    itemId: minecraft:red_bed
     slotId: 47
-    displayName: null
+    displayName: 戻る
+    next: mode
+
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 48
     displayName: null
+
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 49
     displayName: null
+
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 50
     displayName: null
-  - type: plain
-    itemId: minecraft:gray_stained_glass_pane
+
+  - type: sell
+    itemId: minecraft:gold_ingot
     slotId: 51
-    displayName: null
+    displayName: 売却する
+
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 52
-    displayName: null
-  - type: plain
-    itemId: minecraft:gray_stained_glass_pane
-    slotId: 53
     displayName: null
