@@ -1,1 +1,6 @@
 items:
+
+  - type: plain
+    itemId: minecraft:map
+    slotId: 53
+    displayName: 所持金：
