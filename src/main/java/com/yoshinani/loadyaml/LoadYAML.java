@@ -69,7 +69,8 @@ public class LoadYAML {
                             shopbutton = new PlainButton(itemId, slotId, displayName);
                             break;
                         case "select":
-                            shopbutton = new SelectButton(itemId, slotId, displayName);
+                            int price = Integer.parseInt(scanner.nextLine().split("price: ")[1]);
+                            shopbutton = new SelectButton(itemId, slotId, displayName, price);
                             break;
                         case "sell":
                             shopbutton = new SellButton(itemId, slotId, displayName);

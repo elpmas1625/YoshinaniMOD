@@ -1,13 +1,13 @@
 items:
   - type: transition
     itemId: minecraft:diamond_sword
-    slotId: 25
+    slotId: 24
     displayName: 購入
     next: buy_page1
 
   - type: transition
     itemId: minecraft:emerald
-    slotId: 21
+    slotId: 20
     displayName: 売却
     next: sell
 
@@ -32,6 +32,7 @@ items:
     itemId: minecraft:emerald
     slotId: 2
     displayName: null
+    price: 0
 
   - type: sell
     itemId: minecraft:copper_ingot

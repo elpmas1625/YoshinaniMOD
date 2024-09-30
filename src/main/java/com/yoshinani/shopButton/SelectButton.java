@@ -12,11 +12,13 @@ public class SelectButton implements ShopButton {
     public String itemId;
     public int slotId;
     public String displayName;
+    public int price;
 
-    public SelectButton(String pItemId, int pSlotId, String pDisplayName) {
+    public SelectButton(String pItemId, int pSlotId, String pDisplayName, int pPrice) {
         itemId = pItemId;
         slotId = pSlotId;
         displayName = pDisplayName;
+        price = pPrice;
     }
 
     @Override
@@ -37,12 +39,15 @@ public class SelectButton implements ShopButton {
     @Override
     public ItemStack createItemStack() {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), 1);
-        itemStack.setHoverName(Component.nullToEmpty(displayName));
+        itemStack.setHoverName(Component.nullToEmpty(displayName + " :" + price + "円"));
         return itemStack;
     }
 
     @Override
     public void clicked(CustomChestMenu parent) {
-
+        parent.selectedItemId = itemId;
+        parent.selectedItemAmount = 1;
+        parent.selectedItemPrice = price;
+        parent.setPage("buy");
     }
 }

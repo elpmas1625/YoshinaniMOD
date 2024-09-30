@@ -1,28 +1,39 @@
 items:
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
-    slotId: 2
-    displayName: ＋１
+    slotId: 23
+    displayName: +1
     sign: plus
     amount: 1
 
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
-    slotId: 3
-    displayName: ＋１0
+    slotId: 24
+    displayName: +10
     sign: plus
     amount: 10
 
   - type: amount
     itemId: minecraft:red_stained_glass_pane
-    slotId: 5
-    displayName: -１
+    slotId: 21
+    displayName: -1
     sign: minus
     amount: 1
 
   - type: amount
     itemId: minecraft:red_stained_glass_pane
-    slotId: 6
-    displayName: ＋-10
+    slotId: 20
+    displayName: -10
     sign: minus
     amount: 10
+
+  - type: buy
+    itemId: minecraft:gold_ingot
+    slotId: 41
+    displayName: 購入する
+
+  - type: transition
+    itemId: minecraft:gold_ingot
+    slotId: 39
+    displayName: 戻る
+    next: buy_page1

@@ -1,5 +1,18 @@
 items:
+
   - type: select
-    itemId: minecraft:emerald
+    itemId: mmorpg:tp_back
+    slotId: 1
+    displayName: null
+    price: 100
+
+  - type: select
+    itemId: mmorpg:tp_back
     slotId: 2
+    displayName: null
+    price: 100
+
+  - type: plain
+    itemId: minecraft:gray_stained_glass_pane
+    slotId: 53
     displayName: null
