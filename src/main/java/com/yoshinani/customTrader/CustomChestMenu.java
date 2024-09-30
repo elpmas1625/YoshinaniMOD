@@ -1,6 +1,7 @@
 package com.yoshinani.customTrader;
 
 import com.yoshinani.loadyaml.LoadYAML;
+import com.yoshinani.money.Money;
 import com.yoshinani.shopButton.ShopButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -29,17 +30,17 @@ public class CustomChestMenu extends ChestMenu {
     public ItemStack selectedItemStack;
     public ServerPlayer player;
 
-    public CustomChestMenu(MenuType<?> pType, int pContainerId, Inventory pPlayerInventory, Container pContainer, int pRows, StringBuilder pPage) {
+    public CustomChestMenu(MenuType<?> pType, int pContainerId, Inventory pPlayerInventory, Container pContainer, int pRows, StringBuilder pPage, ServerPlayer pPlayer) {
         super(pType, pContainerId, pPlayerInventory, pContainer, pRows);
 
         container = pContainer;
         page = pPage;
+        player = pPlayer;
         setPage(page.toString());
     }
 
     @Override
     public void clicked(int slotId, int buttonId, ClickType clickType, Player player) {
-        this.player = (ServerPlayer) player;
         if (slotId >= 0 && slotId < this.slots.size()) {
             ItemStack clickedStack = this.getSlot(slotId).getItem();
 
@@ -74,7 +75,13 @@ public class CustomChestMenu extends ChestMenu {
         if (page.toString().equals("buy")) {
             selectedItemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(selectedItemId))), selectedItemAmount);
             selectedItemStack.setHoverName(Component.nullToEmpty(selectedItemPrice + " x " + selectedItemAmount + ": " + selectedItemPrice * selectedItemAmount));
-            container.setItem(13, selectedItemStack);
+            container.setItem(4, selectedItemStack);
         }
+
+        updateMoney();
+    }
+
+    public void updateMoney() {
+        container.getItem(53).setHoverName(Component.nullToEmpty("所持金: " + Money.getPlayerMoney(player) + "円"));
     }
 }
