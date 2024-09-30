@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class CustomChestMenu extends ChestMenu {
-    private final Container container;
     private Map<Integer, ShopButton> items;
+    public final Container container;
     public StringBuilder page;
     public String selectedItemId = "minecraft:error";
     public int selectedItemAmount = -1;
