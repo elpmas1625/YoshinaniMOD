@@ -46,6 +46,9 @@ public class TransitionButton implements ShopButton {
 
     @Override
     public void clicked(CustomChestMenu parent) {
+        if (parent.page.toString().equals("sell")) {
+            parent.returnItems();
+        }
         parent.setPage(next);
     }
 }

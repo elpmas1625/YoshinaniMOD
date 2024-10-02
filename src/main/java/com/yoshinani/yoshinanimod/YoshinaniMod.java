@@ -3,7 +3,6 @@ package com.yoshinani.yoshinanimod;
 //TODO: 適宜必要なアイテムを追加
 //TODO: 表示される文言の統一
 //TODO: ランダム生成されるべきアイテムの渡し方
-//TODO: sell -> modeの時、入れたアイテムが帰ってこない
 
 import com.mojang.logging.LogUtils;
 import com.yoshinani.customTrader.CustomTrader;
