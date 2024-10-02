@@ -84,4 +84,13 @@ public class CustomChestMenu extends ChestMenu {
     public void updateMoney() {
         container.getItem(53).setHoverName(Component.nullToEmpty("所持金: " + Money.getPlayerMoney(player) + "円"));
     }
+
+    public void returnItems() {
+        for (int i = 0; i < 45; i++) {
+            ItemStack itemStack = container.getItem(i);
+            if (!itemStack.isEmpty()) {
+                player.getInventory().add(itemStack);
+            }
+        }
+    }
 }

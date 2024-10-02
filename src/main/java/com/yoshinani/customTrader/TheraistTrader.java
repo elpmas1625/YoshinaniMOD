@@ -1,5 +1,6 @@
 package com.yoshinani.customTrader;
 
+import com.yoshinani.env.CustomEnv;
 import com.yoshinani.money.Money;
 import com.yoshinani.therapist.Therapist;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +20,7 @@ import net.minecraft.world.Containers;
 public class TheraistTrader extends CustomTrader {
     public TheraistTrader(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
+        this.setCustomName(Component.literal("Therapist"));
     }
 
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
@@ -35,10 +37,13 @@ public class TheraistTrader extends CustomTrader {
                                 cnt++;
                             }
                         }
-                        if ((long) cnt * Therapist.INSURE_FEE >= Money.getPlayerMoney(serverPlayer)) {
+
+                        long totalFee = (long) cnt * Long.parseLong(CustomEnv.data.get("INSURE_FEE"));
+
+                        if (totalFee >= Money.getPlayerMoney(serverPlayer)) {
                             serverPlayer.sendSystemMessage(Component.literal("お金が足りません"));
                         } else {
-                            Money.setPlayerMoney(serverPlayer, Money.getPlayerMoney(serverPlayer) - (long) cnt * Therapist.INSURE_FEE);
+                            Money.setPlayerMoney(serverPlayer, Money.getPlayerMoney(serverPlayer) - totalFee);
                             for (int i = 0; i < this.getContainerSize(); i++) {
                                 ItemStack stack = this.getItem(i);
                                 if (!stack.isEmpty()) {
