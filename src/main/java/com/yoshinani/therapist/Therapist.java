@@ -15,8 +15,6 @@ import java.util.*;
 public class Therapist {
     private static final Map<UUID, ArrayList<ItemStack>> itemStore = new HashMap<>();
 
-    public static final int INSURE_FEE = 1000;
-
     public static void AddInsuredTooltip(ItemTooltipEvent event) {
         List<Component> tooltipList = event.getToolTip();
         CompoundTag itemTag = event.getItemStack().getTag();

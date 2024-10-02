@@ -1,8 +1,6 @@
 package com.yoshinani.yoshinanimod;
 
 //TODO: 適宜必要なアイテムを追加
-//TODO: 所持金のリアルタイム反映
-//TODO: レアリティを考慮した売価
 //TODO: 表示される文言の統一
 //TODO: ランダム生成されるべきアイテムの渡し方
 //TODO: sell -> modeの時、入れたアイテムが帰ってこない
@@ -10,6 +8,7 @@ package com.yoshinani.yoshinanimod;
 import com.mojang.logging.LogUtils;
 import com.yoshinani.customTrader.CustomTrader;
 import com.yoshinani.customTrader.ModEntities;
+import com.yoshinani.env.CustomEnv;
 import com.yoshinani.loadyaml.LoadYAML;
 import com.yoshinani.money.Money;
 import com.yoshinani.therapist.Therapist;
@@ -63,6 +62,7 @@ public class YoshinaniMod {
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("START onServerStarting()");
 
+        CustomEnv.init();
         Money.loadPlayerMoney();
 
         LoadYAML.init();

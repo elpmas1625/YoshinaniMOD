@@ -3,6 +3,7 @@ package com.yoshinani.shopButton;
 import com.robertx22.mine_and_slash.saveclasses.item_classes.GearItemData;
 import com.robertx22.mine_and_slash.uncommon.datasaving.StackSaving;
 import com.yoshinani.customTrader.CustomChestMenu;
+import com.yoshinani.env.CustomEnv;
 import com.yoshinani.money.Money;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -14,18 +15,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class SellButton implements ShopButton {
-    private static final Map<String, Integer> RARITY_PRICE_MAP = new HashMap<String, Integer>() {
-        {
-            put("common", 100);
-            put("uncommon", 200);
-            put("rare", 300);
-            put("epic", 400);
-            put("legendary", 500);
-            put("mythic", 600);
-            put("unique", 700);
-            put("runeword", 800);
-        }
-    };
     public String itemId;
     public int slotId;
     public String displayName;
@@ -65,7 +54,7 @@ public class SellButton implements ShopButton {
             ItemStack stack = parent.container.getItem(i);
             GearItemData data = StackSaving.GEARS.loadFrom(stack);
             if (!stack.isEmpty() && data != null) {
-                sellingPrice += stack.getCount() * RARITY_PRICE_MAP.get(data.rar);;
+                sellingPrice += stack.getCount() * Integer.parseInt(CustomEnv.data.get("SELL_PRICE_" + data.rar));
                 parent.container.setItem(i, ItemStack.EMPTY);
             }
         }
