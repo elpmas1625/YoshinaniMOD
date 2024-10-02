@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class CustomTrader extends Mob {
     public CustomTrader(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
+        this.setPersistenceRequired();
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -26,6 +27,16 @@ public class CustomTrader extends Mob {
 
     @Override
     public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldDespawnInPeaceful() {
+        return false;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
         return false;
     }
 }

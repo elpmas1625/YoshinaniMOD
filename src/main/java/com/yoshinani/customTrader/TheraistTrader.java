@@ -20,6 +20,7 @@ import net.minecraft.world.Containers;
 public class TheraistTrader extends CustomTrader {
     public TheraistTrader(EntityType<? extends Mob> entityType, Level level) {
         super(entityType, level);
+        this.setCustomName(Component.literal("Therapist"));
     }
 
     public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
