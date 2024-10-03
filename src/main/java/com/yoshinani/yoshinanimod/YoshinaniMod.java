@@ -52,7 +52,6 @@ public class YoshinaniMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);
         ModEntities.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         modEventBus.addListener(this::registerAttributes);
     }
@@ -106,28 +105,9 @@ public class YoshinaniMod {
         });
     }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-    }
-
     @SubscribeEvent
     public void ItemTooltipEvent(ItemTooltipEvent event) {
         Therapist.AddInsuredTooltip(event);
-    }
-
-    @SubscribeEvent
-    public void onPlayerJump(LivingEvent.LivingJumpEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
-
-            ItemStack oakLog = new ItemStack(Items.OAK_LOG, 1);
-            if (!player.getInventory().add(oakLog)) {
-                player.drop(oakLog, false);
-            }
-
-            if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-                setPlayerMoney(serverPlayer, random.nextLong(10000));
-            }
-        }
     }
 
     @SubscribeEvent

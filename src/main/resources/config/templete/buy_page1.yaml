@@ -7,16 +7,183 @@ items:
 
   - type: select
     itemId: mmorpg:tp_back
-    slotId: 1
+    slotId: 0
     displayName: null
-    price: 100
+    price: 110
 
   - type: select
-    itemId: mmorpg:tp_back
+    itemId: mmorpg:map
     slotId: 2
     displayName: null
     price: 100
 
+  - type: select
+    itemId: mmorpg:stat_soul/family/weapon/common
+    slotId: 9
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/armor/common
+    slotId: 10
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/jewelry/common
+    slotId: 11
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/offhand/common
+    slotId: 12
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/weapon/uncommon
+    slotId: 14
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/armor/uncommon
+    slotId: 15
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/jewelry/uncommon
+    slotId: 16
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/offhand/uncommon
+    slotId: 17
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/health/0
+    slotId: 18
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/resource/0
+    slotId: 19
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/health/3
+    slotId: 20
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/resource/3
+    slotId: 21
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/weapon/epic
+    slotId: 23
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/armor/epic
+    slotId: 24
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/jewelry/epic
+    slotId: 25
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/offhand/epic
+    slotId: 26
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/health/1
+    slotId: 27
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/resource/1
+    slotId: 28
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/health/4
+    slotId: 29
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/resource/4
+    slotId: 30
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/weapon/mythic
+    slotId: 32
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/armor/mythic
+    slotId: 33
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/jewelry/mythic
+    slotId: 34
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:stat_soul/family/offhand/mythic
+    slotId: 35
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/health/2
+    slotId: 36
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/resource/2
+    slotId: 37
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/health/5
+    slotId: 38
+    displayName: null
+    price: 1
+
+  - type: select
+    itemId: mmorpg:potion/resource/5
+    slotId: 39
+    displayName: null
+    price: 1
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 45
@@ -48,10 +215,11 @@ items:
     slotId: 50
     displayName: null
 
-  - type: plain
-    itemId: minecraft:gray_stained_glass_pane
+  - type: transition
+    itemId: minecraft:ender_eye
     slotId: 51
     displayName: null
+    next: buy_page2
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
