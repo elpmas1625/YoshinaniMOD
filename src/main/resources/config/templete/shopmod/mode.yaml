@@ -3,16 +3,16 @@ items:
   - type: plain
     itemId: minecraft:map
     slotId: 53
-    displayName: æ‰€æŒé‡‘ï¼š
+    displayName: Š‹àF
 
   - type: transition
     itemId: minecraft:diamond_sword
     slotId: 24
-    displayName: è³¼å…¥
+    displayName: w“ü
     next: buy_page1
 
   - type: transition
     itemId: minecraft:emerald
     slotId: 20
-    displayName: å£²å´
+    displayName: ”„‹p
     next: sell

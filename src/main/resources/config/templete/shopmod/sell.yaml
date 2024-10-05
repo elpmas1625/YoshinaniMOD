@@ -3,7 +3,7 @@ items:
   - type: plain
     itemId: minecraft:map
     slotId: 53
-    displayName: æ‰€æŒé‡‘ï¼š
+    displayName: Š‹àF
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
@@ -18,7 +18,7 @@ items:
   - type: transition
     itemId: minecraft:red_bed
     slotId: 47
-    displayName: æˆ»ã‚‹
+    displayName: –ß‚é
     next: mode
 
   - type: plain
@@ -39,7 +39,7 @@ items:
   - type: sell
     itemId: minecraft:gold_ingot
     slotId: 51
-    displayName: å£²å´ã™ã‚‹
+    displayName: ”„‹p‚·‚é
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane

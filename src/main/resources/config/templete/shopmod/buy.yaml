@@ -3,7 +3,7 @@ items:
   - type: plain
     itemId: minecraft:map
     slotId: 53
-    displayName: æ‰€æŒé‡‘ï¼š
+    displayName: Š‹àF
 
   - type: amount
     itemId: minecraft:lime_stained_glass_pane
@@ -36,10 +36,10 @@ items:
   - type: buy
     itemId: minecraft:gold_ingot
     slotId: 41
-    displayName: è³¼å…¥ã™ã‚‹
+    displayName: w“ü‚·‚é
 
   - type: transition
     itemId: minecraft:red_bed
     slotId: 39
-    displayName: æˆ»ã‚‹
+    displayName: –ß‚é
     next: buy_page1
