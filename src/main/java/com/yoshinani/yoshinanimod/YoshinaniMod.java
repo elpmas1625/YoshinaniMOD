@@ -5,6 +5,7 @@ package com.yoshinani.yoshinanimod;
 //TODO: 職業経験値と同時にお金もGET
 
 import com.mojang.logging.LogUtils;
+import com.yoshinani.customCommand.CustomCommand;
 import com.yoshinani.customTrader.CustomTrader;
 import com.yoshinani.customTrader.ModEntities;
 import com.yoshinani.env.CustomEnv;
@@ -62,8 +63,9 @@ public class YoshinaniMod {
 
         CustomEnv.init();
         Money.loadPlayerMoney();
-
         LoadYAML.init();
+
+        CustomCommand.register(event.getServer().getCommands().getDispatcher());
         LOGGER.info("DONE Load.YAML.init()");
 
         LOGGER.info("FINISH onServerStarting()");

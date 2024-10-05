@@ -3,19 +3,55 @@ items:
   - type: plain
     itemId: minecraft:map
     slotId: 53
-    displayName: ÊâÄÊåÅÈáëÔºö
+    displayName: èäéùã‡ÅF
 
   - type: select
     itemId: mmorpg:tp_back
-    slotId: 0
+    slotId: 3
     displayName: null
     price: 500
 
   - type: select
     itemId: mmorpg:map
-    slotId: 2
+    slotId: 6
     displayName: null
     price: 100
+
+  - type: select
+    itemId: mmorpg:potions/full_reset_talent
+    slotId: 11
+    displayName: null
+    price: 0
+
+  - type: select
+    itemId: mmorpg:potions/full_reset_spell
+    slotId: 12
+    displayName: null
+    price: 0
+
+  - type: select
+    itemId: mmorpg:potions/full_reset_passive
+    slotId: 13
+    displayName: null
+    price: 0
+
+  - type: select
+    itemId: mmorpg:potions/full_reset_ascendancy
+    slotId: 14
+    displayName: null
+    price: 0
+
+  - type: select
+    itemId: mmorpg:master_bag
+    slotId: 22
+    displayName: null
+    price: 3000
+
+  - type: select
+    itemId: mmorpg:potions/full_reset_stat
+    slotId: 6
+    displayName: null
+    price: 0
 
   - type: select
     itemId: mmorpg:potion/health/5
@@ -52,7 +88,7 @@ items:
   - type: transition
     itemId: minecraft:red_bed
     slotId: 49
-    displayName: „Éõ„Éº„É†„Å´Êàª„Çã
+    displayName: ÉzÅ[ÉÄÇ…ñﬂÇÈ
     next: mode
 
   - type: plain
@@ -63,7 +99,7 @@ items:
   - type: transition
     itemId: minecraft:firework_rocket
     slotId: 51
-    displayName: Ê¨°„ÅÆ„Éö„Éº„Ç∏
+    displayName: éüÇÃÉyÅ[ÉW
     next: buy_page2
 
   - type: plain
