@@ -33,7 +33,7 @@ public class TheraistTrader extends CustomTrader {
                         int cnt = 0;
                         for (int i = 0; i < this.getContainerSize(); i++) {
                             ItemStack stack = this.getItem(i);
-                            if (!stack.isEmpty() && !Therapist.isInsured(stack)) {
+                            if (!stack.isEmpty() && !Therapist.isInsured(stack) && !stack.getDescriptionId().equals("item.mmorpg.tp_back")) {
                                 cnt++;
                             }
                         }
@@ -46,7 +46,7 @@ public class TheraistTrader extends CustomTrader {
                             Money.setPlayerMoney(serverPlayer, Money.getPlayerMoney(serverPlayer) - totalFee);
                             for (int i = 0; i < this.getContainerSize(); i++) {
                                 ItemStack stack = this.getItem(i);
-                                if (!stack.isEmpty()) {
+                                if (!stack.isEmpty() && !Therapist.isInsured(stack) && !stack.getDescriptionId().equals("item.mmorpg.tp_back")) {
                                     Therapist.AddInsuredToItem(serverPlayer, stack);
                                 }
                             }
