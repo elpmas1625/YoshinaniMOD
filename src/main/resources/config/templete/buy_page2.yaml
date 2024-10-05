@@ -153,40 +153,41 @@ items:
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 45
-    displayName: null
+    displayName:  
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 46
-    displayName: null
+    displayName:  
 
   - type: transition
-    itemId: minecraft:red_bed
+    itemId: minecraft:firework_rocket
     slotId: 47
-    displayName: 戻る
+    displayName: 前のページ
     next: buy_page1
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 48
-    displayName: null
+    displayName:  
 
-  - type: plain
-    itemId: minecraft:gray_stained_glass_pane
+  - type: transition
+    itemId: minecraft:red_bed
     slotId: 49
-    displayName: null
+    displayName: ホームに戻る
+    next: mode
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 50
-    displayName: null
+    displayName:  
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 51
-    displayName: null
+    displayName:  
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
     slotId: 52
-    displayName: null
+    displayName:  
