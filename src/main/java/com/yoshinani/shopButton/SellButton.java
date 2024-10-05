@@ -10,8 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class SellButton implements ShopButton {
@@ -43,6 +41,9 @@ public class SellButton implements ShopButton {
     @Override
     public ItemStack createItemStack() {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), 1);
+        if (Objects.equals(displayName, "null")) {
+            displayName = itemStack.getDisplayName().getString();
+        }
         itemStack.setHoverName(Component.nullToEmpty(displayName));
         return itemStack;
     }
