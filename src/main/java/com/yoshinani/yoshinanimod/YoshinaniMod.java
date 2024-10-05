@@ -1,8 +1,8 @@
 package com.yoshinani.yoshinanimod;
 
 //TODO: 適宜必要なアイテムを追加
-//TODO: 表示される文言の統一
-//TODO: ランダム生成されるべきアイテムの渡し方
+//TODO: insure問題
+//TODO: 職業経験値と同時にお金もGET
 
 import com.mojang.logging.LogUtils;
 import com.yoshinani.customTrader.CustomTrader;
