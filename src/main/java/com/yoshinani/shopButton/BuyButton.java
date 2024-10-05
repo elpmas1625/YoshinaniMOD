@@ -1,28 +1,17 @@
 package com.yoshinani.shopButton;
 
-import com.robertx22.mine_and_slash.capability.entity.EntityData;
-import com.robertx22.mine_and_slash.database.data.rarities.GearRarity;
-import com.robertx22.mine_and_slash.database.registry.ExileDB;
 import com.robertx22.mine_and_slash.loot.LootInfo;
 import com.robertx22.mine_and_slash.loot.blueprints.MapBlueprint;
-import com.robertx22.mine_and_slash.loot.blueprints.bases.GearRarityPart;
 import com.robertx22.mine_and_slash.uncommon.datasaving.Load;
 import com.robertx22.mine_and_slash.uncommon.utilityclasses.PlayerUtils;
-import com.robertx22.mine_and_slash.vanilla_mc.commands.giveitems.GiveMap;
 import com.yoshinani.customTrader.CustomChestMenu;
 import com.yoshinani.money.Money;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
-
-import com.robertx22.mine_and_slash.mmorpg.registers.common.SlashItemTags;
-
 
 public class BuyButton implements ShopButton {
     public String itemId;
@@ -53,6 +42,9 @@ public class BuyButton implements ShopButton {
     @Override
     public ItemStack createItemStack() {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), 1);
+        if (Objects.equals(displayName, "null")) {
+            displayName = itemStack.getDisplayName().getString();
+        }
         itemStack.setHoverName(Component.nullToEmpty("購入する"));
         return itemStack;
     }

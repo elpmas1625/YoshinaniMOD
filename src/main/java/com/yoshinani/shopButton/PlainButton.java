@@ -37,6 +37,9 @@ public class PlainButton implements ShopButton {
     @Override
     public ItemStack createItemStack() {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), 1);
+        if (Objects.equals(displayName, "null")) {
+            displayName = itemStack.getDisplayName().getString();
+        }
         itemStack.setHoverName(Component.nullToEmpty(displayName));
         return itemStack;
     }

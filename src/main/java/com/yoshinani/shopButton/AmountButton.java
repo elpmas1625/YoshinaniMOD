@@ -43,6 +43,9 @@ public class AmountButton implements ShopButton {
     @Override
     public ItemStack createItemStack() {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId))), amount);
+        if (Objects.equals(displayName, "null")) {
+            displayName = itemStack.getDisplayName().getString();
+        }
         itemStack.setHoverName(Component.nullToEmpty(displayName));
         Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemId));
         assert item != null;
