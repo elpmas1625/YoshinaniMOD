@@ -13,7 +13,7 @@ items:
 
   - type: select
     itemId: mmorpg:map
-    slotId: 6
+    slotId: 5
     displayName: null
     price: 100
 
@@ -42,26 +42,26 @@ items:
     price: 0
 
   - type: select
+    itemId: mmorpg:potions/full_reset_stat
+    slotId: 15
+    displayName: null
+    price: 0
+
+  - type: select
     itemId: mmorpg:master_bag
     slotId: 22
     displayName: null
     price: 3000
 
   - type: select
-    itemId: mmorpg:potions/full_reset_stat
-    slotId: 6
-    displayName: null
-    price: 0
-
-  - type: select
     itemId: mmorpg:potion/health/5
-    slotId: 38
+    slotId: 39
     displayName: null
     price: 500
 
   - type: select
     itemId: mmorpg:potion/resource/5
-    slotId: 39
+    slotId: 41
     displayName: null
     price: 500
 

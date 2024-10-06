@@ -10,49 +10,49 @@ items:
     itemId: mmorpg:stat_soul/family/weapon/common
     slotId: 0
     displayName: null
-    price: 1000
+    price: 10000000
 
   - type: select
     itemId: mmorpg:stat_soul/family/armor/common
     slotId: 1
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/jewelry/common
     slotId: 2
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/offhand/common
     slotId: 3
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/weapon/uncommon
     slotId: 5
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/armor/uncommon
     slotId: 6
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/jewelry/uncommon
     slotId: 7
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/offhand/uncommon
     slotId: 8
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/weapon/rare
@@ -64,91 +64,91 @@ items:
     itemId: mmorpg:stat_soul/family/armor/rare
     slotId: 10
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/jewelry/rare
     slotId: 11
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/offhand/rare
     slotId: 12
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/weapon/epic
     slotId: 14
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/armor/epic
     slotId: 15
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/jewelry/epic
     slotId: 16
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/offhand/epic
     slotId: 17
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/weapon/legendary
     slotId: 18
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/armor/legendary
     slotId: 19
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/jewelry/legendary
     slotId: 20
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/offhand/legendary
     slotId: 21
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/weapon/mythic
     slotId: 23
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/armor/mythic
     slotId: 24
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/jewelry/mythic
     slotId: 25
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: select
     itemId: mmorpg:stat_soul/family/offhand/mythic
     slotId: 26
     displayName: null
-    price: 1000
+    price: 100000
 
   - type: plain
     itemId: minecraft:gray_stained_glass_pane
