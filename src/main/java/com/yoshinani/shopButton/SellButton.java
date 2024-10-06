@@ -1,6 +1,8 @@
 package com.yoshinani.shopButton;
 
 import com.robertx22.mine_and_slash.saveclasses.item_classes.GearItemData;
+import com.robertx22.mine_and_slash.saveclasses.jewel.JewelItemData;
+import com.robertx22.mine_and_slash.saveclasses.skill_gem.SkillGemData;
 import com.robertx22.mine_and_slash.uncommon.datasaving.StackSaving;
 import com.yoshinani.customTrader.CustomChestMenu;
 import com.yoshinani.env.CustomEnv;
@@ -53,9 +55,22 @@ public class SellButton implements ShopButton {
         int sellingPrice = 0;
         for (int i = 0; i < 45; i++) {
             ItemStack stack = parent.container.getItem(i);
-            GearItemData data = StackSaving.GEARS.loadFrom(stack);
-            if (!stack.isEmpty() && data != null) {
-                sellingPrice += stack.getCount() * Integer.parseInt(CustomEnv.data.get("SELL_PRICE_" + data.rar));
+            if (stack.isEmpty()) {
+                continue;
+            }
+            GearItemData gearData = StackSaving.GEARS.loadFrom(stack);
+            if (gearData != null) {
+                sellingPrice += stack.getCount() * Integer.parseInt(CustomEnv.data.get("SELL_PRICE_" + gearData.rar));
+                parent.container.setItem(i, ItemStack.EMPTY);
+            }
+            SkillGemData gemData = StackSaving.SKILL_GEM.loadFrom(stack);
+            if (gemData != null) {
+                sellingPrice += stack.getCount() * Integer.parseInt(CustomEnv.data.get("SELL_PRICE_" + gemData.rar));
+                parent.container.setItem(i, ItemStack.EMPTY);
+            }
+            JewelItemData jewelData = StackSaving.JEWEL.loadFrom(stack);
+            if (jewelData != null) {
+                sellingPrice += stack.getCount() * Integer.parseInt(CustomEnv.data.get("SELL_PRICE_" + jewelData.rar));
                 parent.container.setItem(i, ItemStack.EMPTY);
             }
         }
