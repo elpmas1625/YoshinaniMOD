@@ -1,6 +1,5 @@
 package com.yoshinani.therapist;
 
-import com.yoshinani.money.Money;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.*;
 
@@ -51,6 +51,24 @@ public class Therapist {
                 player.inventoryMenu.setItem(i, 0, ItemStack.EMPTY);
             }
         }
+
+        CuriosApi.getCuriosInventory(player).resolve().ifPresent(iCuriosItemHandler -> {
+            for (int i = 0; i < iCuriosItemHandler.getEquippedCurios().getSlots(); i++) {
+                ItemStack item = iCuriosItemHandler.getEquippedCurios().getStackInSlot(i);
+                CompoundTag itemTag = item.getTag();
+                if (itemTag != null && itemTag.contains("insured")) {
+                    item.removeTagKey("insured");
+                    itemStore.compute(player.getUUID(), (k, v) -> {
+                        if (v == null) {
+                            v = new ArrayList<>();
+                        }
+                        v.add(item.copy());
+                        return v;
+                    });
+                    iCuriosItemHandler.getEquippedCurios().setStackInSlot(i, ItemStack.EMPTY);
+                }
+            }
+        });
     }
 
     public static void GiveInsuredItem(ServerPlayer player) {
